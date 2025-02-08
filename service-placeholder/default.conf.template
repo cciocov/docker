@@ -1,9 +1,11 @@
 server {
-    listen 8080;
-    listen [::]:8080;
+    listen ${HTTP_PORT};
+    listen [::]:${HTTP_PORT};
 
     root /usr/share/nginx/html;
     try_files /index.html =404;
+
+    error_page 405 =200 $uri;
 
     expires -1;
 
